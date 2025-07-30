@@ -71,7 +71,7 @@ spec:
             mountPath: /etc/ksql/queries
           {{- end }}
           env:
-            name: KSQL_JMX_OPTS
+          - name: KSQL_JMX_OPTS
             value: |-
               -Djava.rmi.server.hostname={{ template "cp-ksql-server.name" . }}
               -Dcom.sun.management.jmxremote
