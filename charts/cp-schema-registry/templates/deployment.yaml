@@ -37,6 +37,13 @@ spec:
       {{- if .Values.securityContext }}
 {{ toYaml .Values.securityContext | indent 8 }}
       {{- end}}
+      initContainers:
+        - name: fix-perms
+          image: busybox
+          command: [ "sh", "-c", "chown -R 10001:10001 /etc/schema-registry" ]
+          volumeMounts:
+            - name: config
+              mountPath: /etc/schema-registry
       containers:
         {{- if .Values.prometheus.jmx.enabled }}
         - name: prometheus-jmx-exporter
