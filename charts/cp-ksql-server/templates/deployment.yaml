@@ -70,9 +70,6 @@ spec:
           - name: ksql-queries
             mountPath: /etc/ksql/queries
           {{- end }}
-          - name: log4j2-config
-            mountPath: /opt/bitnami/ksql/etc/ksqldb/log4j2.yaml
-            subPath: log4j2.yaml
           env:
           - name: KSQL_BOOTSTRAP_SERVERS
             value: {{ template "cp-ksql-server.kafka.bootstrapServers" . }}
